@@ -1,0 +1,207 @@
+<PrivateKeyScreen>:
+	name: 'Private Key'
+
+	BoxLayout:
+		orientation: 'horizontal'
+
+		Accordion:
+			orientation: 'horizontal'
+			size_hint: (0.735, 1)
+
+			AccordionItem:
+				id: newKeyAccordionItem
+				title: app.lang['New_Key']
+				on_touch_up:
+					root.set_screen()
+
+				FloatLayout:
+					id: mainLayoutNK
+
+					Label:
+						id: mainLabelNK
+						size_hint: (None, None)
+						width: 700
+						height: 150
+						pos: (20, 200)
+						text: app.lang['New_Key_Intro_Text']
+
+					Label:
+						id: passfieldLabelNK
+						size_hint: (None, None)
+						width: 100
+						height: 30
+						pos: (70, 150)
+						text: app.lang['Passphrase_Label']
+
+					TextInput:
+						id: passfieldNK
+						size_hint: (None, None)
+						width: 450
+						height: 30
+						pos: (200, 150)
+						password: True
+						multiline: False
+						on_text:
+							root.check_passphrase(passfieldNK, checkfieldNK, feedbackNK, mainLayoutNK, submitButtonNK)
+					Label:
+						id: feedbackNK
+						size_hint: (None,None)
+						width: 450
+						height: 30
+						pos: (200, 110)
+						bold: True
+
+					Label:
+						id: checkfieldLabelNK
+						size_hint: (None, None)
+						width: 100
+						height: 30
+						pos: (70, 70)
+						text: app.lang['Confirm_Passphrase_Label']
+
+					TextInput:
+						id: checkfieldNK
+						size_hint: (None, None)
+						width: 450
+						height: 30
+						pos: (200, 70)
+						password: True
+						multiline: False
+						on_text:
+							root.check_passphrase(passfieldNK, checkfieldNK, feedbackNK, mainLayoutNK, submitButtonNK)
+
+					Button:
+						id: submitButtonNK
+						size_hint: (None, None)
+						width: 300
+						height: 40
+						pos: (200, 20)
+						text: app.lang['Submit_Label']
+						on_press:
+							root.submit_passphrase()
+
+					Button:
+						id: encryptButtonNK
+						size_hint: (None, None)
+						width: 300
+						height: 40
+						pos: (200, 90)
+						text: app.lang['Encrypt_Label']
+						on_press:
+							root.action_start(mainLayoutNK, mainLabelNK)
+
+					ProgressBar:
+						id: progressBarNK
+						size_hint: (None, None)
+						width: 600
+						max: 800
+						pos: (70, 100)
+						disabled: True
+
+
+			AccordionItem:
+				id: existingKeyAccordionItem
+				title: app.lang['Existing_Key']
+				on_touch_down:
+					root.set_screen()
+
+				FloatLayout:
+					id: mainLayoutEK
+
+					Label:
+						id: mainLabelEK
+						size_hint: (None, None)
+						width: 700
+						height: 150
+						pos: (40, 200)
+						text: app.lang['Existing_Key_Intro_Text']
+
+					Label:
+						id: privateKeyLabelEK
+						size_hint: (None, None)
+						width: 100
+						height: 30
+						pos: (120, 130)
+						text: app.lang['Private_Key']
+
+					TextInput:
+						id: privateKeyInputEK
+						size_hint: (None, None)
+						width: 450
+						height: 30
+						pos: (250, 130)
+						multiline: False
+						focus: True
+
+					Button:
+						id: submitButtonEK
+						size_hint: (None, None)
+						width: 300
+						height: 40
+						pos: (250, 50)
+						text: app.lang['Submit_Label']
+						on_press:
+							root.check_private_key(privateKeyInputEK.text)
+
+					Label:
+						id: passfieldLabelEK
+						size_hint: (None, None)
+						width: 100
+						height: 30
+						pos: (120, 150)
+						text: app.lang['Passphrase_Label']
+
+					TextInput:
+						id: passfieldEK
+						size_hint: (None, None)
+						width: 450
+						height: 30
+						pos: (250, 150)
+						password: True
+						multiline: False
+						focus: True
+						on_text:
+							root.check_passphrase(passfieldEK, checkfieldEK, feedbackEK, mainLayoutEK, actionButtonEK)
+
+					Label:
+						id: feedbackEK
+						size_hint: (None,None)
+						width: 450
+						height: 30
+						pos: (250, 110)
+						bold: True
+
+					Label:
+						id: checkfieldLabelEK
+						size_hint: (None, None)
+						width: 100
+						height: 30
+						pos: (120, 70)
+						text: app.lang['Confirm_Passphrase_Label']
+
+					TextInput:
+						id: checkfieldEK
+						size_hint: (None, None)
+						width: 450
+						height: 30
+						pos: (250, 70)
+						password: True
+						multiline: False
+						on_text:
+							root.check_passphrase(passfieldEK, checkfieldEK, feedbackEK, mainLayoutEK, actionButtonEK)
+
+					Button:
+						id: actionButtonEK
+						size_hint: (None, None)
+						width: 300
+						height: 40
+						pos: (250, 20)
+						on_press:
+							root.action_start(mainLayoutEK, mainLabelEK)
+
+		AsyncImage:
+			id: image
+			source: 'res/images/HomePageImage.png'
+			size_hint: (.265, 1)
+			allow_stretch: True
+			keep_ratio: False

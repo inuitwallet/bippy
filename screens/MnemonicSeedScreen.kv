@@ -1,0 +1,108 @@
+<MnemonicSeedScreen>
+	name: app.get_string('Mnemonic_Seed_Screen')
+
+	BoxLayout:
+		id: eSSBoxLayout
+		orientation: 'horizontal'
+
+		FloatLayout:
+			id: mainLayout
+			size_hint: (0.735, 1)
+
+			Label:
+				id: mainLabel
+				size_hint: (None, None)
+				width: 700
+				height: 150
+				pos: (20, 200)
+				text: app.get_string('Mnemonic_Intro_Text')
+
+			Label:
+				id: seedLabel
+				size_hint: (None, None)
+				width: 100
+				height: 30
+				pos: (70, 135)
+				text: app.get_string('Mnemonic_Seed_Label')
+
+			TextInput:
+				id: seedfield
+				size_hint: (None, None)
+				width: 450
+				height: 60
+				pos: (200, 120)
+				multiline: True
+
+			Button:
+				id: submitButton
+				size_hint: (None, None)
+				width: 300
+				height: 40
+				pos: (200, 50)
+				text: app.get_string('Submit_Label')
+				on_press:
+					root.submit_seed()
+
+			Label:
+				id: passfieldLabel
+				size_hint: (None, None)
+				width: 100
+				height: 30
+				pos: (120, 150)
+				text: app.get_string('Passphrase_Label')
+
+			TextInput:
+				id: passfield
+				size_hint: (None, None)
+				width: 450
+				height: 30
+				pos: (250, 150)
+				password: True
+				multiline: False
+				focus: True
+				on_text:
+					root.check_passphrase(passfield, checkfield, feedback, mainLayout, encryptButton)
+
+			Label:
+				id: feedback
+				size_hint: (None,None)
+				width: 450
+				height: 30
+				pos: (250, 110)
+				bold: True
+
+			Label:
+				id: checkfieldLabel
+				size_hint: (None, None)
+				width: 100
+				height: 30
+				pos: (120, 70)
+				text: app.get_string('Confirm_Passphrase_Label')
+
+			TextInput:
+				id: checkfield
+				size_hint: (None, None)
+				width: 450
+				height: 30
+				pos: (250, 70)
+				password: True
+				multiline: False
+				on_text:
+					root.check_passphrase(passfield, checkfield, feedback, mainLayout, encryptButton)
+
+			Button:
+				id: encryptButton
+				size_hint: (None, None)
+				width: 300
+				height: 40
+				pos: (250, 20)
+				text: app.get_string('Encrypt_Label')
+				on_press:
+					root.action_start(mainLayout, mainLabel)
+
+		AsyncImage:
+			id: eSSImage
+			source: 'res/images/HomePageImage.png'
+			size_hint: (.265, 1)
+			allow_stretch: True
+			keep_ratio: True

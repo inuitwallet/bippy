@@ -1,0 +1,160 @@
+<VanityScreen>:
+
+	name: 'Vanity Address'
+
+	BoxLayout:
+		orientation: 'horizontal'
+
+		FloatLayout:
+			id: mainLayout
+			size_hint: (0.735, 1)
+
+			Label:
+				id: mainLabel
+				size_hint: (None, None)
+				width: 700
+				height: 150
+				pos: (40, 170)
+				text: app.get_string('Vanity_Intro_Text')
+
+			Label:
+				id: vanityLabel
+				size_hint: (None, None)
+				width: 100
+				height: 30
+				pos: (120, 130)
+				text: app.get_string('Vanity_Text')
+
+			TextInput:
+				id: vanityInput
+				size_hint: (None, None)
+				width: 450
+				height: 30
+				pos: (250, 130)
+				multiline: False
+				focus: True
+
+			Button:
+				id: submitButton
+				size_hint: (None, None)
+				width: 300
+				height: 40
+				pos: (250, 50)
+				text: app.get_string('Submit_Label')
+				on_press:
+					root.submit_vanity(vanityInput.text)
+
+			Button:
+				id: abortButton
+				size_hint: (None, None)
+				width: 300
+				height: 40
+				pos: (200, 50)
+				text: app.get_string('Abort')
+				on_press:
+					root.abort_vanitygen()
+
+			Button:
+				id: yesButtonInfo
+				size_hint: (None, None)
+				width: 200
+				height: 40
+				pos: (100, 70)
+				text: app.get_string('Yes')
+				on_press:
+					root.run_vanitygen()
+
+			Button:
+				id: noButtonInfo
+				size_hint: (None, None)
+				width: 200
+				height: 40
+				pos: (400, 70)
+				text: app.get_string('No')
+				on_press:
+					root.reset_ui(None)
+
+			Button:
+				id: yesButtonEncrypt
+				size_hint: (None, None)
+				width: 200
+				height: 40
+				pos: (100, 70)
+				text: app.get_string('Yes')
+				on_press:
+					root.show_password()
+
+			Button:
+				id: noButtonEncrypt
+				size_hint: (None, None)
+				width: 200
+				height: 40
+				pos: (400, 70)
+				text: app.get_string('No')
+				on_press:
+					root.display_result()
+
+			Label:
+				id: passfieldLabel
+				size_hint: (None, None)
+				width: 100
+				height: 30
+				pos: (120, 150)
+				text: app.get_string('Passphrase_Label')
+
+			TextInput:
+				id: passfield
+				size_hint: (None, None)
+				width: 450
+				height: 30
+				pos: (250, 150)
+				password: True
+				multiline: False
+				focus: True
+				on_text:
+					root.check_passphrase(passfield, checkfield, feedback, mainLayout, actionButton)
+
+			Label:
+				id: feedback
+				size_hint: (None,None)
+				width: 450
+				height: 30
+				pos: (250, 110)
+				bold: True
+
+			Label:
+				id: checkfieldLabel
+				size_hint: (None, None)
+				width: 100
+				height: 30
+				pos: (120, 70)
+				text: app.get_string('Confirm_Passphrase_Label')
+
+			TextInput:
+				id: checkfield
+				size_hint: (None, None)
+				width: 450
+				height: 30
+				pos: (250, 70)
+				password: True
+				multiline: False
+				on_text:
+					root.check_passphrase(passfield, checkfield, feedback, mainLayout, actionButton)
+
+			Button:
+				id: actionButton
+				size_hint: (None, None)
+				width: 300
+				height: 40
+				pos: (250, 20)
+				on_press:
+					root.encrypt_privkey()
+
+
+
+		AsyncImage:
+			id: image
+			source: 'res/images/HomePageImage.png'
+			size_hint: (.265, 1)
+			allow_stretch: True
+			keep_ratio: False

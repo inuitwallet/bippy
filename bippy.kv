@@ -1,0 +1,54 @@
+#:import Factory kivy.factory.Factory
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+#:import AccordionItem kivy.uix.accordion
+#:import bippy bippy
+
+<ActionSpinnerOptions@SpinnerOption>
+    background_color: .4, .4, .4, 1
+
+<ActionSpinner@Spinner+ActionItem>
+    canvas.before:
+        Color:
+            rgba: 0.128, 0.128, 0.128, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    border: 27, 20, 12, 12
+    background_normal: 'atlas://data/images/defaulttheme/action_group'
+	option_cls: Factory.ActionSpinnerOptions
+
+<ActionDropdown>:
+    on_size: self.width = '220dp'
+
+<TopActionBar>:
+	id: topActionBar
+
+	ActionView:
+	    id: topActionView
+
+	    ActionPrevious:
+	        id: topActionPrevious
+	        with_previous: False
+	        app_icon: 'data/logo/kivy-icon-32.png'
+	        title: app.get_string('Main_Title')
+	        on_release: root.switch_screen(app.get_string('Home_Screen'))
+
+	    #ActionToggleButton:
+	    #    id: topInfoButton
+	    #    icon: 'res/icons/info.png'
+	    #    on_release: app.toggle_info()
+
+		ActionSpinner:
+	        id: currencySpinner
+	        important: True
+	        text: app.get_string('No_Currency_Selected')
+	        values: app.currencyLongNamesList
+	        #disabled: True
+	        on_text: root.set_currency(self.text)
+
+	    ActionSpinner:
+	        id: actionSpinner
+	        important: True
+	        text: app.get_string('Action_Title')
+	        values: [app.get_string('Private_Key_Screen'), app.get_string('Vanity_Screen'), app.get_string('Mnemonic_Seed_Screen'), app.get_string('Public_Key_Screen')]
+	        on_text: root.switch_screen(self.text)

@@ -1,0 +1,18 @@
+<HomeScreen>
+	name: 'Home Screen'
+
+	BoxLayout:
+		id: hSBoxLayout
+		orientation: 'horizontal'
+
+		Label:
+			id: hSMainLabel
+			text: app.get_string('Home_Screen_Intro_Text')
+			size_hint: (.735, 1)
+
+		AsyncImage:
+			id: hSImage
+			source: 'res/images/HomePageImage.png'
+			size_hint: (.265, 1)
+			allow_stretch: True
+			keep_ratio:False
