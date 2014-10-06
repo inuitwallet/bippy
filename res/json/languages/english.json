@@ -9,14 +9,7 @@
 	"Public_Key_Screen" : "Public Address",
 	"Vanity_Screen" : "Vanity Address",
 	"Results_Screen" : "Results",
-
-	"Home_Screen_Info" : "Bippy is a multipurpose tool for securing Crypto Currencies with a range of encryption methods.\nBippy can encrypt and decrypt private keys using the methodology outlined in the BIP38 (Bitcoin Improvement Proposal 38) specification.",
-	"Private_Key_Screen_Info" : "This screen will ",
-	"Private_Key_New_Key_Screen_Info" : "New Key",
-	"Intermediate_Code_Screen_Info" : "inter code",
-	"Mnemonic_Seed_Screen_Info" : "ESeed",
-	"Public_Key_Screen_Info" : "Public Address",
-	"Results_Screen_Info": "Results",
+	"Links_Screen_Wood_Wallets" : "Wood Wallets",
 
 	"Popup_Error" : "Error!",
 	"No_Chosen_Currency" : "No Currency has been selected\nPlease choose a currency form the drop down on the top bar.",
@@ -28,12 +21,12 @@
 	"Encrypt" : "Encrypt",
 	"Decrypt" : "Decrypt",
 
-	"Bip_Successful" : "BIP0038 encryption was successful.\n\nYour encrypted private key and address are below.",
-	"Bip_Decrypt_Successful" : "BIP0038 Decryption was successful.\n\nYour decrypted, WIF format private key and address are below.",
+	"Bip_Successful" : "BIP0038 encryption was successful.\n\nYour encrypted private key and address are below.\n\nLinks for purchasing cold-storage solutions are available in the 'Action' menu.",
+	"Bip_Decrypt_Successful" : "BIP0038 Decryption was successful.\n\nYour decrypted, WIF format private key and address are below.\n\nLinks for purchasing cold-storage solutions are available in the 'Action' menu.",
 	"Bip_Decrypt_Unsuccessful" : "BIP0038 Decryption was unsuccessful.\n\nPlease try again to ensure you used the correct passphrase.",
-	"Address_Encryption_Successful" : "BIP0038 style encryption of your Address was successful.\n\nYour encrypted Address is below.",
-	"Address_Decryption_Successful" : "BIP0038 style decryption of your encrypted Address was successful.\n\nYour decrypted Address is below.",
-	"Electrum_Encrypt_Successful" : "BIP0038 style encryption was successful.\n\nYour encrypted Electrum Seed is below.",
+	"Address_Encryption_Successful" : "BIP0038 style encryption of your Address was successful.\n\nYour encrypted Address is below.\n\nLinks for purchasing cold-storage solutions are available in the 'Action' menu.",
+	"Address_Decryption_Successful" : "BIP0038 style decryption of your encrypted Address was successful.\n\nYour decrypted Address is below.\n\nLinks for purchasing cold-storage solutions are available in the 'Action' menu.",
+	"Electrum_Encrypt_Successful" : "BIP0038 style encryption was successful.\n\nYour encrypted Electrum Seed is below.\n\nLinks for purchasing cold-storage solutions are available in the 'Action' menu.",
 	"Electrum_Decrypt_Successful" : "The decryption of your Electrum Seed was successful.\n\nYour decrypted seed is below.",
 	"Bip_Key_Label" : "BIP0038 encrypted key",
 	"Wif_Key_Label" : "WIF format key",
@@ -75,7 +68,7 @@
 	"Not_Private_Key" : "The text you entered was not recognised as a valid private key.\n\nPlease try again.",
 	"Bip_Key_Entered" : "You entered a BIP0038 encrypted private key.\n\nPlease enter your encryption passphrase below to decrypt the key.",
 
-	"Mnemonic_Intro_Text" : "This action will encrypt or decrypt a mnemonic seed.\n\nBippy uses a customised encryption method based on BIP0038.\n\nEnter your seed or encrypted string to begin.",
+	"Mnemonic_Intro_Text" : "This action will encrypt or decrypt a mnemonic seed.\n\nBippy uses a customised encryption method based on BIP0038.\n\nEnter your seed to begin encryption\nor your encrypted seed to begin decryption.",
 	"Mnemonic_Seed_Label" : "Mnemonic Seed",
 	"Invalid_Word_Electrum_Seed" : "The seed you entered contains an invalid word not found in the Electrum dictionary.\n\nPlease double check your seed and try again.",
 	"Not_Mnemonic_Seed" : "The text you entered was not recognised as a valid Mnemonic Seed.\n\nPlease try again.",
@@ -84,7 +77,7 @@
 	"Encrypted_Electrum_Bad_Checksum" : "The checksum doesn't match the encrypted Electrum seed you entered.\n\nPlease try again to ensure that you enter it correctly.",
 	"Electrum_Bad_Salt" : "The calculated seed doesn't match the hash contained in the encrypted seed.\nPlease try again to ensure you enter it correctly.",
 
-	"Public_Key_Intro_Text" : "This action will encrypt any public address using a custom, BIP0038 style encryption method.",
+	"Public_Key_Intro_Text" : "This action will encrypt any public address using a custom, BIP0038 style encryption method.\n\nThe Address type must match the currency selected above.",
 	"Public_Key_Label" : "Public Address",
 	"Not_Valid_Address" : "The address entered was not a valid",
 	"Address" : "address",
@@ -122,6 +115,11 @@
 
 	"Warning" : "Warning",
 	"Case_Sensitivity_Warning" : "Your vanity text would make your public address invalid.\nbippy will search without honouring upper and lower case instead.",
-	"Regex_Warning" : "Your vanity text would make your public address invalid.\nbippy will search using the text as a regular expression instead."
+	"Regex_Warning" : "Your vanity text would make your public address invalid.\nbippy will search using the text as a regular expression instead.",
+
+	"Public_Address_Link" : "Public Address Only",
+	"Private_Key_Link" : "Private Key Only",
+	"Double_Sided_Link" : "Double Sided - Private Key and Address",
+	"Mnemonic_Seed_Link" : "Encrypted Mnemonic Seed"
 
 }

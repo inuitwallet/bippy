@@ -22,6 +22,16 @@ class ResultsScreen(Screen):
 		self.bottomField = self.ids.bottomField.__self__
 		return
 
+	def reset_ui(self, dt):
+		"""
+			clear all data from the ui
+		"""
+		self.topField.text = ''
+		self.middleField.text = ''
+		self.middleFieldMulti.text = ''
+		self.bottomField.text = ''
+		return
+
 	def switch_to_results(self, dt):
 		"""
 			switch to the results screen
@@ -32,8 +42,28 @@ class ResultsScreen(Screen):
 
 	def display_bip(self, BIP, Address):
 		"""
-			Display the BIP encrypted key, the address and the links
+			Display the BIP encrypted key, the address and the links to woodwallets
 		"""
+		#set the links on the links page
+		links_ww = self.BippyApp.mainScreenManager.get_screen(self.BippyApp.get_string('Links_Screen_Wood_Wallets'))
+		links_ww.linkAccordion.clear_widgets()
+
+		links_ww.public.title = self.BippyApp.get_string('Public_Address_Link')
+		links_ww.publicUrl.text = links_ww.get_public_ww(Address)
+		links_ww.linkAccordion.add_widget(links_ww.public)
+
+		links_ww.private.title = self.BippyApp.get_string('Private_Key_Link')
+		links_ww.privateUrl.text = links_ww.get_private_ww(BIP)
+		links_ww.linkAccordion.add_widget(links_ww.private)
+
+		links_ww.double.title = self.BippyApp.get_string('Double_Sided_Link')
+		links_ww.doubleUrl.text = links_ww.get_double_ww(Address, BIP)
+		links_ww.linkAccordion.add_widget(links_ww.double)
+
+		#update the Action Switcher to allow for Links to be displayed
+		self.BippyApp.topActionBar.actionSpinner.values = [self.BippyApp.get_string('Results_Screen'), self.BippyApp.get_string('Links_Screen_Wood_Wallets')]
+
+		#set up the results page
 		self.mainLayout.clear_widgets()
 		self.mainLayout.add_widget(self.mainLabel)
 		self.mainLayout.add_widget(self.topLabel)
@@ -41,8 +71,10 @@ class ResultsScreen(Screen):
 		self.mainLayout.add_widget(self.bottomLabel)
 		self.mainLayout.add_widget(self.bottomField)
 
-		Clock.schedule_once(self.switch_to_results, 0.5)
+		#switch to the results page
+		Clock.schedule_once(self.switch_to_results, 0.1)
 
+		#update the results page
 		self.mainLabel.text = self.BippyApp.get_string('Bip_Successful')
 		self.topLabel.text = self.BippyApp.get_string('Bip_Key_Label')
 		self.topField.text = str(BIP)
@@ -53,8 +85,20 @@ class ResultsScreen(Screen):
 
 	def display_wif(self, WIF, Address):
 		"""
-			Display the decrypted WIF key, the address and the links
+			Display the decrypted WIF key and the address
 		"""
+
+		#set the links on the links page
+		links_ww = self.BippyApp.mainScreenManager.get_screen(self.BippyApp.get_string('Links_Screen_Wood_Wallets'))
+		links_ww.linkAccordion.clear_widgets()
+
+		links_ww.public.title = self.BippyApp.get_string('Public_Address_Link')
+		links_ww.publicUrl.text = links_ww.get_public_ww(Address)
+		links_ww.linkAccordion.add_widget(links_ww.public)
+
+		#update the Action Switcher to allow for Links to be displayed
+		self.BippyApp.topActionBar.actionSpinner.values = [self.BippyApp.get_string('Results_Screen'), self.BippyApp.get_string('Links_Screen_Wood_Wallets')]
+
 		self.mainLayout.clear_widgets()
 		self.mainLayout.add_widget(self.mainLabel)
 
@@ -81,6 +125,17 @@ class ResultsScreen(Screen):
 		"""
 			Display the BIP encrypted mnemonic seed
 		"""
+		#set the links on the links page
+		links_ww = self.BippyApp.mainScreenManager.get_screen(self.BippyApp.get_string('Links_Screen_Wood_Wallets'))
+		links_ww.linkAccordion.clear_widgets()
+
+		links_ww.private.title = self.BippyApp.get_string('Mnemonic_Seed_Link')
+		links_ww.privateUrl.text = links_ww.get_private_ww(sBIP)
+		links_ww.linkAccordion.add_widget(links_ww.private)
+
+		#update the Action Switcher to allow for Links to be displayed
+		self.BippyApp.topActionBar.actionSpinner.values = [self.BippyApp.get_string('Results_Screen'), self.BippyApp.get_string('Links_Screen_Wood_Wallets')]
+
 		self.mainLayout.clear_widgets()
 		self.mainLayout.add_widget(self.mainLabel)
 		self.mainLayout.add_widget(self.middleLabel)
@@ -117,6 +172,17 @@ class ResultsScreen(Screen):
 		"""
 			Display the newly encrypted public address
 		"""
+		#set the links on the links page
+		links_ww = self.BippyApp.mainScreenManager.get_screen(self.BippyApp.get_string('Links_Screen_Wood_Wallets'))
+		links_ww.linkAccordion.clear_widgets()
+
+		links_ww.public.title = self.BippyApp.get_string('Public_Address_Link')
+		links_ww.publicUrl.text = links_ww.get_public_ww(encAddress)
+		links_ww.linkAccordion.add_widget(links_ww.public)
+
+		#update the Action Switcher to allow for Links to be displayed
+		self.BippyApp.topActionBar.actionSpinner.values = [self.BippyApp.get_string('Results_Screen'), self.BippyApp.get_string('Links_Screen_Wood_Wallets')]
+
 		self.mainLayout.clear_widgets()
 		self.mainLayout.add_widget(self.mainLabel)
 		self.mainLayout.add_widget(self.middleLabel)
@@ -134,6 +200,17 @@ class ResultsScreen(Screen):
 		"""
 			Display the decrypted public Address
 		"""
+		#set the links on the links page
+		links_ww = self.BippyApp.mainScreenManager.get_screen(self.BippyApp.get_string('Links_Screen_Wood_Wallets'))
+		links_ww.linkAccordion.clear_widgets()
+
+		links_ww.public.title = self.BippyApp.get_string('Public_Address_Link')
+		links_ww.publicUrl.text = links_ww.get_public_ww(Address)
+		links_ww.linkAccordion.add_widget(links_ww.public)
+
+		#update the Action Switcher to allow for Links to be displayed
+		self.BippyApp.topActionBar.actionSpinner.values = [self.BippyApp.get_string('Results_Screen'), self.BippyApp.get_string('Links_Screen_Wood_Wallets')]
+
 		self.mainLayout.clear_widgets()
 		self.mainLayout.add_widget(self.mainLabel)
 		self.mainLayout.add_widget(self.middleLabel)

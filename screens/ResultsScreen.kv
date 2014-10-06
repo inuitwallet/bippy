@@ -1,5 +1,5 @@
 <ResultsScreen>:
-	name: 'Results'
+	name: app.get_string('Results_Screen')
 
 	BoxLayout:
 		orientation: 'horizontal'
@@ -29,6 +29,8 @@
 				height: 30
 				pos: (180, 150)
 				multiline: False
+				readonly: True
+				allow_copy: True
 
 			Label:
 				id: middleLabel
@@ -44,6 +46,8 @@
 				height: 30
 				pos: (200, 120)
 				multiline: False
+				readonly: True
+				allow_copy: True
 
 			TextInput:
 				id: middleFieldMulti
@@ -52,6 +56,8 @@
 				height: 60
 				pos: (200, 120)
 				multiline: True
+				readonly: True
+				allow_copy: True
 
 			Label:
 				id: bottomLabel
@@ -67,6 +73,8 @@
 				height: 30
 				pos: (180, 70)
 				multiline: False
+				readonly: True
+				allow_copy: True
 
 
 		AsyncImage:

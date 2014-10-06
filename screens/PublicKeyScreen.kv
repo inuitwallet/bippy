@@ -1,5 +1,5 @@
 <PublicKeyScreen>
-	name: app.lang['Public_Key_Screen']
+	name: app.get_string('Public_Key_Screen')
 
 	BoxLayout:
 		orientation: 'horizontal'
@@ -14,7 +14,7 @@
 				width: 700
 				height: 150
 				pos: (20, 200)
-				text: app.lang['Public_Key_Intro_Text']
+				text: app.get_string('Public_Key_Intro_Text')
 
 			Label:
 				id: keyLabel
@@ -22,7 +22,7 @@
 				width: 100
 				height: 30
 				pos: (70, 150)
-				text: app.lang['Public_Key_Label']
+				text: app.get_string('Public_Key_Label')
 
 			TextInput:
 				id: keyfield
@@ -38,7 +38,7 @@
 				width: 300
 				height: 40
 				pos: (200, 50)
-				text: app.lang['Submit_Label']
+				text: app.get_string('Submit_Label')
 				on_press:
 					root.check_address(keyfield.text)
 

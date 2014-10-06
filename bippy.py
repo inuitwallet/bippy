@@ -32,6 +32,7 @@ import json
 
 import screens.HomeScreen as HomeScreen
 import screens.ResultsScreen as ResultsScreen
+import screens.LinksScreen as LinksScreen
 import screens.PrivateKeyScreen as PrivateKeyScreen
 import screens.MnemonicSeedScreen as MnemonicSeedScreen
 import screens.IntermediateCodeScreen as IntermediateCodeScreen
@@ -47,6 +48,11 @@ class TopActionBar(ActionBar):
 	def __init__(self, **kwargs):
 		super(TopActionBar, self).__init__(**kwargs)
 		#self.infoButton = self.ids.topInfoButton.__self__
+		self.topActionView = self.ids.topActionView.__self__
+		self.topActionPrevious = self.ids.topActionPrevious.__self__
+		self.currencySpinner = self.ids.currencySpinner.__self__
+		self.actionSpinner = self.ids.actionSpinner.__self__
+		return
 
 	def switch_screen(self, screen):
 		"""
@@ -130,7 +136,6 @@ class BippyApp(App):
 	currencies = json.load(open('res/json/currencies.json', 'r'))
 	#This is the list of available currencies
 	currencyLongNamesList = ['Bitcoin', 'Litecoin', 'Dogecoin', 'Peercoin', 'Blackcoin', 'Vertcoin']
-	electrumCurrencies = ['Bitcoin', 'Litecoin']
 
 	#Set the language and load the language file
 	language = 'english'
@@ -187,6 +192,8 @@ class BippyApp(App):
 		self.vanityScreen = VanityScreen.VanityScreen(self)
 		Builder.load_file('screens/ResultsScreen.kv')
 		self.resultsScreen = ResultsScreen.ResultsScreen(self)
+		Builder.load_file('screens/LinksScreen.kv')
+		self.linksScreenWoodWallets = LinksScreen.LinksScreen(self, name=self.get_string('Links_Screen_Wood_Wallets'))
 
 		#Add the screens to the screen manager
 		BippyApp.mainScreenManager.add_widget(self.homeScreen)
@@ -196,6 +203,7 @@ class BippyApp(App):
 		BippyApp.mainScreenManager.add_widget(self.publicKeyScreen)
 		BippyApp.mainScreenManager.add_widget(self.vanityScreen)
 		BippyApp.mainScreenManager.add_widget(self.resultsScreen)
+		BippyApp.mainScreenManager.add_widget(self.linksScreenWoodWallets)
 
 		#add the screenmanager to the root
 		self.root.add_widget(BippyApp.mainScreenManager)
@@ -254,9 +262,13 @@ class BippyApp(App):
 			reset the UI to it's original state
 			this is called when the home screen is selected
 		"""
+		self.topActionBar.actionSpinner.values = [self.get_string('Private_Key_Screen'), self.get_string('Vanity_Screen'), self.get_string('Mnemonic_Seed_Screen'), self.get_string('Public_Key_Screen')]
 		self.privateKeyScreen.reset_ui(None)
 		self.mnemonicSeedScreen.reset_ui(None)
 		self.publicKeyScreen.reset_ui(None)
+		self.vanityScreen.reset_ui(None)
+		self.resultsScreen.reset_ui(None)
+		self.linksScreenWoodWallets.reset_ui(None)
 		return
 
 	def show_popup(self, title, text):

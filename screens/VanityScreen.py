@@ -338,8 +338,8 @@ class VanityScreen(Screen):
 		"""
 			set up the results page and pass the variables to them
 		"""
-		resultsScreen = self.BippyApp.mainScreenManager.get_screen('Results')
-		resultsScreen.display_wif_vanity(self.privkey, self.address)
+		resultsScreen = self.BippyApp.mainScreenManager.get_screen(self.BippyApp.get_string('Results_Screen'))
+		resultsScreen.display_wif(self.privkey, self.address)
 
 	def encrypt_privkey(self):
 		"""
@@ -355,7 +355,7 @@ class VanityScreen(Screen):
 			Perform the actual encryption
 		"""
 		BIP, Address = gen.encBIPKey(self.privkey, self.BippyApp.chosenCurrency, self.passphrase)
-		resultsScreen = self.BippyApp.mainScreenManager.get_screen('Results')
+		resultsScreen = self.BippyApp.mainScreenManager.get_screen(self.BippyApp.get_string('Results_Screen'))
 		resultsScreen.display_bip(BIP, Address)
 
 		#clear the UI

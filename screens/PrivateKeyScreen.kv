@@ -1,5 +1,5 @@
 <PrivateKeyScreen>:
-	name: 'Private Key'
+	name: app.get_string('Private_Key_Screen')
 
 	BoxLayout:
 		orientation: 'horizontal'
@@ -10,7 +10,7 @@
 
 			AccordionItem:
 				id: newKeyAccordionItem
-				title: app.lang['New_Key']
+				title: app.get_string('New_Key')
 				on_touch_up:
 					root.set_screen()
 
@@ -23,7 +23,7 @@
 						width: 700
 						height: 150
 						pos: (20, 200)
-						text: app.lang['New_Key_Intro_Text']
+						text: app.get_string('New_Key_Intro_Text')
 
 					Label:
 						id: passfieldLabelNK
@@ -31,7 +31,7 @@
 						width: 100
 						height: 30
 						pos: (70, 150)
-						text: app.lang['Passphrase_Label']
+						text: app.get_string('Passphrase_Label')
 
 					TextInput:
 						id: passfieldNK
@@ -57,7 +57,7 @@
 						width: 100
 						height: 30
 						pos: (70, 70)
-						text: app.lang['Confirm_Passphrase_Label']
+						text: app.get_string('Confirm_Passphrase_Label')
 
 					TextInput:
 						id: checkfieldNK
@@ -76,7 +76,7 @@
 						width: 300
 						height: 40
 						pos: (200, 20)
-						text: app.lang['Submit_Label']
+						text: app.get_string('Submit_Label')
 						on_press:
 							root.submit_passphrase()
 
@@ -86,7 +86,7 @@
 						width: 300
 						height: 40
 						pos: (200, 90)
-						text: app.lang['Encrypt_Label']
+						text: app.get_string('Encrypt_Label')
 						on_press:
 							root.action_start(mainLayoutNK, mainLabelNK)
 
@@ -101,7 +101,7 @@
 
 			AccordionItem:
 				id: existingKeyAccordionItem
-				title: app.lang['Existing_Key']
+				title: app.get_string('Existing_Key')
 				on_touch_down:
 					root.set_screen()
 
@@ -114,7 +114,7 @@
 						width: 700
 						height: 150
 						pos: (40, 200)
-						text: app.lang['Existing_Key_Intro_Text']
+						text: app.get_string('Existing_Key_Intro_Text')
 
 					Label:
 						id: privateKeyLabelEK
@@ -122,7 +122,7 @@
 						width: 100
 						height: 30
 						pos: (120, 130)
-						text: app.lang['Private_Key']
+						text: app.get_string('Private_Key')
 
 					TextInput:
 						id: privateKeyInputEK
@@ -139,7 +139,7 @@
 						width: 300
 						height: 40
 						pos: (250, 50)
-						text: app.lang['Submit_Label']
+						text: app.get_string('Submit_Label')
 						on_press:
 							root.check_private_key(privateKeyInputEK.text)
 
@@ -149,7 +149,7 @@
 						width: 100
 						height: 30
 						pos: (120, 150)
-						text: app.lang['Passphrase_Label']
+						text: app.get_string('Passphrase_Label')
 
 					TextInput:
 						id: passfieldEK
@@ -177,7 +177,7 @@
 						width: 100
 						height: 30
 						pos: (120, 70)
-						text: app.lang['Confirm_Passphrase_Label']
+						text: app.get_string('Confirm_Passphrase_Label')
 
 					TextInput:
 						id: checkfieldEK

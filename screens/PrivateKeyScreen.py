@@ -326,7 +326,7 @@ class PrivateKeyScreen(Screen):
 		else:
 			#otherwise, we encrypt the existing key
 			BIP, Address = gen.encBIPKey(self.privateKey, self.BippyApp.chosenCurrency, self.passphrase, self.isCompressed)
-		resultsScreen = self.BippyApp.mainScreenManager.get_screen('Results')
+		resultsScreen = self.BippyApp.mainScreenManager.get_screen(self.BippyApp.get_string('Results_Screen'))
 		resultsScreen.display_bip(BIP, Address)
 		#clear the UI
 		Clock.schedule_once(self.reset_ui, 5)
@@ -338,7 +338,7 @@ class PrivateKeyScreen(Screen):
 		"""
 		self.BippyApp.check_chosen_currency()
 		WIF, Address = gen.decBIPKey(self.privateKey, self.passphrase, self.BippyApp.chosenCurrency)
-		resultsScreen = self.BippyApp.mainScreenManager.get_screen('Results')
+		resultsScreen = self.BippyApp.mainScreenManager.get_screen(self.BippyApp.get_string('Results_Screen'))
 		resultsScreen.display_wif(WIF, Address)
 		#clear the UI
 		Clock.schedule_once(self.reset_ui, 5)
