@@ -1,0 +1,80 @@
+<LinksScreen>:
+
+	BoxLayout:
+		orientation: 'horizontal'
+
+		Accordion:
+			id: linkAccordion
+			orientation: 'horizontal'
+			size_hint: (0.735, 1)
+
+			AccordionItem:
+				id: public
+
+				BoxLayout:
+					orientation: 'vertical'
+
+					AsyncImage:
+						id: publicImage
+						source: 'res/images/public-side.png'
+						size_hint: (1, 0.9)
+						allow_stretch: True
+						keep_ratio: True
+
+					TextInput:
+						id: publicUrl
+						multiline: False
+						size_hint: (1, 0.1)
+						pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+						readonly: True
+						allow_copy: True
+
+			AccordionItem:
+				id: private
+
+				BoxLayout:
+					orientation: 'vertical'
+
+					AsyncImage:
+						id: privateImage
+						source: 'res/images/private-side.png'
+						size_hint: (1, 0.9)
+						allow_stretch: True
+						keep_ratio: True
+
+					TextInput:
+						id: privateUrl
+						multiline: False
+						size_hint: (1, 0.1)
+						pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+						readonly: True
+						allow_copy: True
+
+			AccordionItem:
+				id: double
+
+				BoxLayout:
+					orientation: 'vertical'
+
+					AsyncImage:
+						id: doubleImage
+						source: 'res/images/doubleside.png'
+						size_hint: (1, 0.9)
+						allow_stretch: False
+						keep_ratio: False
+
+					TextInput:
+						id: doubleUrl
+						multiline: False
+						size_hint: (1, 0.1)
+						pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+						readonly: True
+						allow_copy: True
+
+
+		AsyncImage:
+			id: image
+			source: 'res/images/HomePageImage.png'
+			size_hint: (.265, 1)
+			allow_stretch: True
+			keep_ratio: False
