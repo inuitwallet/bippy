@@ -18,7 +18,7 @@ class PrivateKeyScreen(Screen):
 
 		self.passphrase = StringProperty()
 		self.privateKey = StringProperty()
-		self.entropy = ListProperty()
+		self.entropy = []
 		self.newKey = BooleanProperty(False)
 		self.isCompressed = True
 		self.isBip = BooleanProperty(False)
