@@ -24,7 +24,7 @@ Both will need to be installed on your computer before Bippy will run. There are
 On Windows Kivy comes as a portable application. It can be a bit of a faff to get it working first time but the instructions on the Kivy site are clearer than I can manage here.
 I intend to build some binary versions of Bippy in the near future which should make this step unnecessary. I will update this README when that happens.
 
-###Runing Bippy
+###Running Bippy
 
 Once you have Python and Kivy installed simply clone this repository and run the Bippy.py file
 The command used differs on different OSes. On Linux you use 'python Bippy.py'. On Mac you use 'kivy Bippy.py'. On windows you have to go through the procedure laid out on the Kivy website. 
