@@ -22,13 +22,13 @@ Bippy is built using Python 2.7 [https://www.python.org/downloads/] and Kivy [ht
 Both will need to be installed on your computer before Bippy will run. There are good instructions for installing both Python and Kivy on their respective websites. 
 
 On Windows Kivy comes as a portable application. It can be a bit of a faff to get it working first time but the instructions on the Kivy site are clearer than I can manage here.
-I intend to build some binary versions of Bippy in the near future which should make this step unneccessary. I will update this README when that happens.
+I intend to build some binary versions of Bippy in the near future which should make this step unnecessary. I will update this README when that happens.
 
 ###Runing Bippy
 
 Once you have Python and Kivy installed simply clone this repository and run the Bippy.py file
 The command used differs on different OSes. On Linux you use 'python Bippy.py'. On Mac you use 'kivy Bippy.py'. On windows you have to go through the procedure laid out on the Kivy website. 
-Again, once I have compiled some executable versions, this will be unneccessary.
+Again, once I have compiled some executable versions, this will be unnecessary.
 
 Bippy can be used totally offline. It also has no cache (unlike a web browser) so the keys it generates can be considered 'cold'.
 
