@@ -38,11 +38,15 @@ class LinksScreen(Screen):
 		"""
 		return 'https://woodwallets.io/product/woodwallet-public-address?pub_addr=' + public + '&pub_coin=' + self.BippyApp.chosenCurrencyLongName + '&orig=bippy'
 
-	def get_private_ww(self, private):
+	def get_private_ww(self, private, mnemonic=''):
 		"""
 			return the Woodwallets url for private key only
 		"""
-		return 'https://woodwallets.io/product/one-side-private-key-only?pvt_pvtkey=' + private + '&pvt_coin=' + self.BippyApp.chosenCurrencyLongName + '&orig=bippy'
+		if mnemonic == '':
+			coin = self.BippyApp.chosenCurrencyLongName
+		else:
+			coin = mnemonic
+		return 'https://woodwallets.io/product/one-side-private-key-only?pvt_pvtkey=' + private + '&pvt_coin=' + coin + '&orig=bippy'
 
 	def get_double_ww(self, public, private):
 		"""

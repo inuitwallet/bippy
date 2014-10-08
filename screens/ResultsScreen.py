@@ -130,7 +130,7 @@ class ResultsScreen(Screen):
 		links_ww.linkAccordion.clear_widgets()
 
 		links_ww.private.title = self.BippyApp.get_string('Mnemonic_Seed_Link')
-		links_ww.privateUrl.text = links_ww.get_private_ww(sBIP)
+		links_ww.privateUrl.text = links_ww.get_private_ww(sBIP, 'electrum')
 		links_ww.linkAccordion.add_widget(links_ww.private)
 
 		#update the Action Switcher to allow for Links to be displayed
