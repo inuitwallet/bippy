@@ -1,15 +1,12 @@
-#bippy 
-###fast and easy BIP0038 encryption for multiple crypto-currencies
+#Bippy 
+###MultiCurrency Toolkit
 #####http://bippy.org
 
-Keeping private keys is inherently unsafe. 
-If a third party has access to your private key, they have access to all of your coins. 
-BIP0038 encryption adds a layer of security to your private key by protecting it with a passphrase. 
-A BIP0038 encrypted private key is useless without the passphrase, but with the passphrase it still gives you control of your coins.
+Bippy is a tool for securing crypto-currencies. 
+It uses the encryption technique laid out in BIP0038 to secure private keys and custom techniques based closely on BIP0038 to encrypt Mnemonic seeds and Public Addresses
+Bippy can also generate vanity addresses by wrapping a customised 'vanitygen' executable. The resulting private key can be BIp0038 encrypted
 
-bippy is a tool for quickly and securely generating BIP0038 encrypted keys for a range of crypto-currencies.
-
-   - bippy can generate new private keys or encrypt existing keys.
+For more information on how to use    
    - bippy has a simple user interface with helpful instructions to make the encryption process easier.
    - After encrypting a key, bippy can show you copy and paste-able personalised links to woodwallets.io so that you can keep your BIP0038 encrypted key safe in style.
    - bippy does not need an internet connection so private key generation and encryption can be kept secure.
