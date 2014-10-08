@@ -13,6 +13,7 @@
 
 	"Popup_Error" : "Error!",
 	"No_Chosen_Currency" : "No Currency has been selected\nPlease choose a currency form the drop down on the top bar.",
+	"Vanity_Run_Error" : "There was an error running vanitygen.\n\nTry again or report this issue.",
 	"No_Currency_Selected" : "No Currency Selected",
 	"No_Currency_Needed" : "No Currency Needed",
 	"Action_Title" : "Action",
