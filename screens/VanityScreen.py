@@ -40,6 +40,7 @@ class VanityScreen(Screen):
 		self.feedback = self.ids.feedback.__self__
 		self.checkfieldLabel = self.ids.checkfieldLabel.__self__
 		self.checkfield = self.ids.checkfield.__self__
+		self.actionButton = self.ids.actionButton.__self__
 
 		self.reset_ui(None)
 		return
@@ -66,7 +67,7 @@ class VanityScreen(Screen):
 
 	def submit_vanity(self, vanity, command=''):
 		"""
-			submit the vanity text and pass it to vanitygen_linux_64 for a test run
+			submit the vanity text and pass it to vanitygen for a test run
 
 			we simulate a full run. This will give us the difficulty and the first three system info outputs
 			if the vanity is very easy we may get the address and private key in the output of the simulation
@@ -102,8 +103,12 @@ class VanityScreen(Screen):
 					self.command.append('-X ' + str(cur['version']))
 					self.command.append('-n')
 					self.command.append(cur['prefix'] + str(self.vanity))
+		try:
+			output = subprocess.Popen(self.command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+		except OSError:
+			self.BippyApp.show_popup(self.BippyApp.get_string('Popup_Error'), self.BippyApp.get_string('Vanity_Run_Error'))
+			return
 
-		output = subprocess.Popen(self.command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 		#first check for errors
 		error = output.stderr.read()
@@ -149,7 +154,7 @@ class VanityScreen(Screen):
 
 	def display_system_info(self, values):
 		"""
-			show the system information from the vanitygen_linux_64 simulation process to the user
+			show the system information from the vanitygen simulation process to the user
 		"""
 		val = values.split('\n')
 		#first row is difficulty
@@ -275,7 +280,7 @@ class VanityScreen(Screen):
 
 	def read_output(self, dt):
 		"""
-			read the output of the vanitygen_linux_64 program and see if an address has been found
+			read the output of the vanitygen program and see if an address has been found
 		"""
 		line = self.output.stdout.readline()
 		if 'Address:' in line:
@@ -287,7 +292,7 @@ class VanityScreen(Screen):
 
 	def abort_vanitygen(self):
 		"""
-		    kill the vanitygen_linux_64 search and reset the ui
+		    kill the vanitygen search and reset the ui
 		"""
 		Clock.unschedule(self.update_counter)
 		Clock.unschedule(self.read_output)
@@ -297,7 +302,7 @@ class VanityScreen(Screen):
 
 	def run_vanitygen(self):
 		"""
-			run the vanitygen_linux_64 executable without the 'simulate' flag
+			run the vanitygen executable without the 'simulate' flag
 		"""
 		self.counter = Clock.schedule_interval(self.update_counter, 1)
 		self.reader = Clock.schedule_interval(self.read_output, 0.1)
@@ -307,7 +312,7 @@ class VanityScreen(Screen):
 
 		def kill_vanitygen():
 			"""
-				kill the vanitygen_linux_64 process.
+				kill the vanitygen process.
 				designed to be called atexit to cancel any unwanted long-running process
 			"""
 			os.kill(self.output.pid, 9)
@@ -318,7 +323,7 @@ class VanityScreen(Screen):
 
 	def display_vanity(self, values):
 		"""
-			show the results of the vanitygen_linux_64 process to the user
+			show the results of the vanitygen process to the user
 		"""
 		lines = values.split('\n')
 		for line in lines:
