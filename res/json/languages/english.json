@@ -47,7 +47,7 @@
 	"Confirm_Passphrase_Label" : "Confirm Passphrase",
 	"Passphrase_Too_Short" : "Passphrase is too short.",
 	"Passphrases_Dont_Match" : "Passphrases do not match.",
-	"Entropy_Explanation" : "To ensure that a strong private key is generated you need to enter some randomness\n\nHold down your mouse button and draw dots on bippy.",
+	"Entropy_Explanation" : "To ensure that a strong private key is generated you need to enter some randomness\n\nHold down your mouse button and draw dots on Bippy.",
 	"Enough_Entropy" : "You have generated enough Randomness.\n\nHit the 'Encrypt' button to start the BIP0038 encryption.",
 
 	"Submit_Label" : "Submit",
@@ -88,24 +88,25 @@
 	"No_Valid_Address" : "The text you entered wasn't a valid Address or encrypted address.\nPlease try again.",
 	"Valid_Public_Address_1" : "You entered a valid ",
 	"Valid_Public_Address_2" : "\n\nPlease enter your passphrase below to encrypt it.",
+	"Public_Key_Passphrase" : "To encrypt your public address, please enter a passphrase below.\n\nYour passphrase must be at least 7 characters long.",
 	"Valid_Encrypted_Address" : "You entered a valid encrypted public address.\n\nPlease enter your passphrase below to decrypt it.",
 
-	"Vanity_Intro_Text" : "This action will allow you to generate a vanity address.\n\nPlease make sure you have selected a currency in the dropdown on the top bar\nand then enter your vanity text in the box below.",
+	"Vanity_Intro_Text" : "This action will allow you to generate a vanity address for NuBits or NuShares.\n\nPlease make sure you have selected either Nubits or Nushares in the dropdown on the top bar\nand then enter your vanity text in the box below.\n\nUse the 'case insensitive' or 'regex' options to speed up longer searches",
 	"Vanity_Text" : "Vanity Text",
 
 	"System_Info_1" : "To find a ",
 	"System_Info_2" : " address containing the vanity text ",
-	"System_Info_3" : ",\nbippy will have to check an average of ",
+	"System_Info_3" : ",\nBippy will have to check an average of ",
 	"System_Info_4" : " private keys.",
 	"System_Info_5" : "\n\nYour system is capable of checking roughly ",
 	"System_Info_6" : "\nAt this rate you have a ",
 	"System_Info_7" : "% chance of finding your vanity address within ",
 	"System_Info_8" : ".\n\nDo you want to continue the search?",
 
-	"Display_Vanity_1" : "bippy has found the vanity address\n",
+	"Display_Vanity_1" : "Bippy has found the vanity address\n",
 	"Display_Vanity_2" : ".\n\nWould you like to BIP0038 encrypt the private key?",
 
-	"Starting_Search" : "bippy is now starting the search for your vanity address.\n\nPlease wait until the search is complete.",
+	"Starting_Search" : "Bippy is now starting the search for your vanity address.\n\nPlease wait until the search is complete.",
 	"Approximate_Time" : "Approximate time elapsed:\n",
 
 	"Vanity_Passphrase" : "To BIP0038 encrypt your private key, please enter a passphrase below.\n\nYour passphrase must be at least 7 characters long.",
@@ -115,12 +116,16 @@
 	"Invalid_Character" : "Your vanity text contains an invalid character.\nYou can't use 'l', 'I','O' or '0'",
 
 	"Warning" : "Warning",
-	"Case_Sensitivity_Warning" : "Your vanity text would make your public address invalid.\nbippy will search without honouring upper and lower case instead.",
-	"Regex_Warning" : "Your vanity text would make your public address invalid.\nbippy will search using the text as a regular expression instead.",
+	"Case_Sensitivity_Warning" : "Your vanity text would make your public address invalid.\nBippy will search without honouring upper and lower case instead.",
+	"Regex_Warning" : "Your vanity text would make your public address invalid.\nBippy will search using the text as a regular expression instead.",
 
 	"Public_Address_Link" : "Public Address Only",
 	"Private_Key_Link" : "Private Key Only",
 	"Double_Sided_Link" : "Double Sided - Private Key and Address",
-	"Mnemonic_Seed_Link" : "Encrypted Mnemonic Seed"
+	"Mnemonic_Seed_Link" : "Encrypted Mnemonic Seed",
+
+	"Case_Insensitive_Search" : "Case Insensitive",
+	"Regex_Search" : "Regex",
+	"Regex_Search_Info" : "You have chosen to perform a Regex Search.\n\nIt is not possible to give an estimate on how long your search may take\nbut it could be a long time.\n\nDo you want to continue?"
 
 }

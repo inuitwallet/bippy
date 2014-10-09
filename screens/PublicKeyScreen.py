@@ -76,7 +76,7 @@ class PublicKeyScreen(Screen):
 			self.pub_address = self.keyfield.text
 			self.type = 'address'
 			self.passphrase_entry()
-			self.mainLabel.text = self.BippyApp.get_string('Valid_Public_Address_1') + self.BippyApp.chosenCurrencyLongName + '' + self.BippyApp.get_string('Address') + self.BippyApp.get_string('Valid_Public_Address_2')
+			self.mainLabel.text = self.BippyApp.get_string('Valid_Public_Address_1') + self.BippyApp.chosenCurrencyLongName + ' ' + self.BippyApp.get_string('Address') + self.BippyApp.get_string('Valid_Public_Address_2')
 			return
 
 		#check if the entered text is an encrypted address
@@ -101,6 +101,7 @@ class PublicKeyScreen(Screen):
 			Set up the UI ready for passphrase entry
 		"""
 		self.mainLayout.clear_widgets()
+		self.mainLayout.add_widget(self.mainLabel)
 		self.mainLayout.add_widget(self.passfieldLabel)
 		self.mainLayout.add_widget(self.passfield)
 		self.mainLayout.add_widget(self.feedback)

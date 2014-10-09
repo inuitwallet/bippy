@@ -72,6 +72,8 @@ class TopActionBar(ActionBar):
 		if screen == self.BippyApp.get_string('Mnemonic_Seed_Screen'):
 			self.set_currency(self.BippyApp.get_string('No_Currency_Selected'))
 			self.currencySpinner.disabled = True
+			import encrypt.electrum as electrum
+			print(electrum.buildRandom())
 		else:
 			self.set_currency(self.ids.currencySpinner.text)
 			self.currencySpinner.disabled = False

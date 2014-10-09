@@ -28,6 +28,11 @@ class VanityScreen(Screen):
 		self.vanityInput = self.ids.vanityInput.__self__
 		self.submitButton = self.ids.submitButton.__self__
 
+		self.caseLabel = self.ids.caseLabel.__self__
+		self.caseCheck = self.ids.caseCheck.__self__
+		self.regexLabel = self.ids.regexLabel.__self__
+		self.regexCheck = self.ids.regexCheck.__self__
+
 		self.abortButton = self.ids.abortButton.__self__
 
 		self.yesButtonInfo = self.ids.yesButtonInfo.__self__
@@ -54,6 +59,12 @@ class VanityScreen(Screen):
 		self.vanityInput.text = ''
 		self.mainLayout.add_widget(self.vanityInput)
 		self.mainLayout.add_widget(self.submitButton)
+		self.mainLayout.add_widget(self.caseLabel)
+		self.caseCheck.active = False
+		self.mainLayout.add_widget(self.caseCheck)
+		self.mainLayout.add_widget(self.regexLabel)
+		self.regexCheck.active = False
+		self.mainLayout.add_widget(self.regexCheck)
 
 		self.passfield.text =''
 		self.checkfield.text = ''
@@ -63,6 +74,18 @@ class VanityScreen(Screen):
 		self.timer = None
 		self.address = ''
 		self.privkey = ''
+		return
+
+	def toggle_radio(self, button):
+		"""
+			When the text 'Case insenstive' is clicked, this method is fired to toggle the radio button
+		"""
+		if button == 'case':
+			self.caseCheck.active = not self.caseCheck.active
+			self.regexCheck.active = not self.caseCheck.active
+		if button == 'regex':
+			self.regexCheck.active = not self.regexCheck.active
+			self.caseCheck.active = not self.regexCheck.active
 		return
 
 	def submit_vanity(self, vanity, command=''):
@@ -97,6 +120,12 @@ class VanityScreen(Screen):
 					self.command = ['./res/vanitygen/vanitygen_mac_64']
 				else:
 					self.command = ['./res/vanitygen/vanitygen_mac']
+
+			if self.caseCheck.active is True:
+				self.command.append('-i')
+
+			if self.regexCheck.active is True:
+				self.command.append('-r')
 			
 			for cur in self.BippyApp.currencies:
 				if cur['currency'] == self.BippyApp.chosenCurrency:
@@ -119,11 +148,6 @@ class VanityScreen(Screen):
 				self.command.append('-i')
 				self.submit_vanity(self.vanity, self.command)
 				self.BippyApp.show_popup(self.BippyApp.get_string('Warning'), self.BippyApp.get_string('Case_Sensitivity_Warning'))
-				return
-			if '-r' not in self.command:
-				self.command.append('-r')
-				self.submit_vanity(self.vanity, self.command)
-				self.BippyApp.show_popup(self.BippyApp.get_string('Warning'), self.BippyApp.get_string('Regex_Warning'))
 				return
 			#if we get here, none of the above worked so show the error
 			self.BippyApp.show_popup(self.BippyApp.get_string('Popup_Error'), error)
@@ -156,42 +180,47 @@ class VanityScreen(Screen):
 		"""
 			show the system information from the vanitygen simulation process to the user
 		"""
-		val = values.split('\n')
-		#first row is difficulty
-		difficulty = val[0].split(':')[1].strip()
-		#next three lines are system info
-		#we are only really interested in the last two though as the first never seems to give the correct estimates
-		#send that necessary data to the function for parsing
-		rate, time, percentage = self.get_system_info(val[2], val[3])
+		#if regex search, we don't have info like this
+		if '-r' in self.command:
+			output = self.BippyApp.get_string('Regex_Search_Info')
+		else:
+			val = values.split('\n')
+			#first row is difficulty
+			difficulty = val[0].split(':')[1].strip()
+			#next three lines are system info
+			#we are only really interested in the last two though as the first never seems to give the correct estimates
+			#send that necessary data to the function for parsing
+			rate, time, percentage = self.get_system_info(val[2], val[3])
 
-		#unit conversion of rate and time
-		rate_unit = 'keys/sec'
-		if rate > 1000:
-			rate = (rate / 1000)
-			rate_unit = 'Kkeys/sec'
-		if rate > 1000:
-			rate = (rate / 1000)
-			rate_unit = 'Mkeys/sec'
+			#unit conversion of rate and time
+			rate_unit = 'keys/sec'
+			if rate > 1000:
+				rate = (rate / 1000)
+				rate_unit = 'Kkeys/sec'
+			if rate > 1000:
+				rate = (rate / 1000)
+				rate_unit = 'Mkeys/sec'
 
-		time_unit = 'seconds'
-		if time > 60:
-			time = (time / 60)
-			time_unit = 'minutes'
-		if time > 60:
-			time = (time / 60)
-			time_unit = 'hours'
-		if time > 24:
-			time = (time / 24)
-			time_unit = 'days'
-		if time > 365:
-			time = (time / 365)
-			time_unit = 'years'
+			time_unit = 'seconds'
+			if time > 60:
+				time = (time / 60)
+				time_unit = 'minutes'
+			if time > 60:
+				time = (time / 60)
+				time_unit = 'hours'
+			if time > 24:
+				time = (time / 24)
+				time_unit = 'days'
+			if time > 365:
+				time = (time / 365)
+				time_unit = 'years'
 
-		output = self.BippyApp.get_string('System_Info_1') + self.BippyApp.chosenCurrency + self.BippyApp.get_string('System_Info_2') + self.vanity \
-		         + self.BippyApp.get_string('System_Info_3') + difficulty + self.BippyApp.get_string('System_Info_4') \
-		         + self.BippyApp.get_string('System_Info_5') + str(rate) + ' ' + rate_unit + '.' \
-		         + self.BippyApp.get_string('System_Info_6') + str(percentage) + self.BippyApp.get_string('System_Info_7') \
-		         + str(time) + ' ' + time_unit + self.BippyApp.get_string('System_Info_8')
+			output = self.BippyApp.get_string('System_Info_1') + self.BippyApp.chosenCurrency + self.BippyApp.get_string('System_Info_2') + self.vanity \
+			         + self.BippyApp.get_string('System_Info_3') + difficulty + self.BippyApp.get_string('System_Info_4') \
+			         + self.BippyApp.get_string('System_Info_5') + str(rate) + ' ' + rate_unit + '.' \
+			         + self.BippyApp.get_string('System_Info_6') + str(percentage) + self.BippyApp.get_string('System_Info_7') \
+			         + str(time) + ' ' + time_unit + self.BippyApp.get_string('System_Info_8')
+
 		self.mainLayout.clear_widgets()
 		self.mainLayout.add_widget(self.mainLabel)
 		self.mainLabel.text = output

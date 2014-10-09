@@ -22,7 +22,7 @@
 				size_hint: (None, None)
 				width: 100
 				height: 30
-				pos: (120, 130)
+				pos: (120, 110)
 				text: app.get_string('Vanity_Text')
 
 			TextInput:
@@ -30,7 +30,7 @@
 				size_hint: (None, None)
 				width: 450
 				height: 30
-				pos: (250, 130)
+				pos: (250, 110)
 				multiline: False
 				focus: True
 
@@ -43,6 +43,48 @@
 				text: app.get_string('Submit_Label')
 				on_press:
 					root.submit_vanity(vanityInput.text)
+
+			Label:
+				id: caseLabel
+				size_hint: (None, None)
+				width: 100
+				height: 40
+				pos: (90, 73)
+				font_size: 11
+				text: '[ref=case]' + app.get_string('Case_Insensitive_Search') + '[/ref]'
+				text_size: self.size
+				markup: True
+				on_ref_press:
+					root.toggle_radio('case')
+
+			CheckBox:
+				id: caseCheck
+				size_hint: (None, None)
+				width: 10
+				height: 10
+				pos: (65, 75)
+				group: 'options'
+
+			Label:
+				id: regexLabel
+				size_hint: (None, None)
+				width: 100
+				height: 40
+				pos: (90, 43)
+				font_size: 11
+				text: '[ref=regex]' + app.get_string('Regex_Search') + '[/ref]'
+				text_size: self.size
+				markup: True
+				on_ref_press:
+					root.toggle_radio('regex')
+
+			CheckBox:
+				id: regexCheck
+				size_hint: (None, None)
+				width: 10
+				height: 10
+				pos: (65, 45)
+				group: 'options'
 
 			Button:
 				id: abortButton
