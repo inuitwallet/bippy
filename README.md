@@ -16,19 +16,26 @@ Bippy is able to generate valid private keys and addresses for a range of curren
   - Attractive UI with informative instructions
   - Possible to use dice to generate a private key
 
-###Installing Bippy
+###Windows Installer
+
+Bippy has been packaged into an installable package for Windows. The downloadable zip file contains the installer exe file, the source code and a README file. the download is available on the Bippy website:
+
+http://bippy.org/download
+
+
+###Installing Bippy from source
 
 Bippy is built using Python 2.7 [https://www.python.org/downloads/] and Kivy [http://kivy.org/#download]. 
 Both will need to be installed on your computer before Bippy will run. There are good instructions for installing both Python and Kivy on their respective websites. 
 
 On Windows Kivy comes as a portable application. It can be a bit of a faff to get it working first time but the instructions on the Kivy site are clearer than I can manage here.
-I intend to build some binary versions of Bippy in the near future which should make this step unnecessary. I will update this README when that happens.
 
 ###Running Bippy
 
-Once you have Python and Kivy installed simply clone this repository and run the Bippy.py file
-The command used differs on different OSes. On Linux you use 'python Bippy.py'. On Mac you use 'kivy Bippy.py'. On windows you have to go through the procedure laid out on the Kivy website. 
-Again, once I have compiled some executable versions, this will be unnecessary.
+If you used the Windows installer, simply click the link on the Desktop or in the Start Menu.
+
+Otherwise, once you have Python and Kivy installed clone this repository and run the Bippy.py file
+The command used differs on different OSes. On Linux you use 'python Bippy.py'. On Mac you use 'kivy Bippy.py'. 
 
 Bippy can be used totally offline. It also has no cache (unlike a web browser) so the keys it generates can be considered 'cold'.
 
