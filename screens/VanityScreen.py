@@ -32,6 +32,8 @@ class VanityScreen(Screen):
 		self.caseCheck = self.ids.caseCheck.__self__
 		self.regexLabel = self.ids.regexLabel.__self__
 		self.regexCheck = self.ids.regexCheck.__self__
+		self.standardLabel = self.ids.standardLabel.__self__
+		self.standardCheck = self.ids.standardCheck.__self__
 
 		self.abortButton = self.ids.abortButton.__self__
 
@@ -65,6 +67,9 @@ class VanityScreen(Screen):
 		self.mainLayout.add_widget(self.regexLabel)
 		self.regexCheck.active = False
 		self.mainLayout.add_widget(self.regexCheck)
+		self.mainLayout.add_widget(self.standardLabel)
+		self.standardCheck.active = True
+		self.mainLayout.add_widget(self.standardCheck)
 
 		self.passfield.text =''
 		self.checkfield.text = ''
@@ -83,9 +88,15 @@ class VanityScreen(Screen):
 		if button == 'case':
 			self.caseCheck.active = not self.caseCheck.active
 			self.regexCheck.active = not self.caseCheck.active
+			self.standardCheck.active = not self.caseCheck.active
 		if button == 'regex':
 			self.regexCheck.active = not self.regexCheck.active
 			self.caseCheck.active = not self.regexCheck.active
+			self.standardCheck.active = not self.regexCheck.active
+		if button == 'standard':
+			self.standardCheck.active = not self.standardCheck.active
+			self.caseCheck.active = not self.standardCheck.active
+			self.regexCheck.active = not self.standardCheck.active
 		return
 
 	def submit_vanity(self, vanity, command=''):
@@ -110,10 +121,7 @@ class VanityScreen(Screen):
 					self.command = ['./res/vanitygen/vanitygen_linux']
 			#Windows
 			if system() == 'Windows':
-				if architecture()[0] == '64bit':
-					self.command = ['./res/vanitygen/vanitygen_win_64']
-				else:
-					self.command = ['./res/vanitygen/vanitygen_win']
+				self.command = ['./res/vanitygen/vanitygen.exe']
 			#Mac
 			if system() == 'Darwin':
 				if architecture()[0] == '64bit':
