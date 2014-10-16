@@ -126,6 +126,7 @@
 
 	"Case_Insensitive_Search" : "Case Insensitive",
 	"Regex_Search" : "Regex",
+	"Standard_Search" : "Standard",
 	"Regex_Search_Info" : "You have chosen to perform a Regex Search.\n\nIt is not possible to give an estimate on how long your search may take\nbut it could be a long time.\n\nDo you want to continue?"
 
 }
