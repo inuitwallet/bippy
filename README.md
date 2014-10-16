@@ -69,7 +69,7 @@ When generating private keys internally, Bippy uses three different sources of E
 
 ###Known Issues
 
-The issues at the moment are to do with the compiling of the binaries that Bippy needs to run. The two it uses are scrypt (fopr BIp0038 encryption) and vanitygen 9for vanity address generation).
+The issues at the moment are to do with the compiling of the binaries that Bippy needs to run. The two it uses are scrypt (for BIP0038 encryption) and vanitygen (for vanity address generation).
 Bippy currently has scrypt binaries for:
 Linux (64 bit)
 Linux (32 bit)
@@ -78,5 +78,8 @@ Windows (32 bit)
 
 and vanitygen binaries for:
 Linux (64 bit)
+Windows (32 bit)
+
+(Windows will only use the 32 bit version of these binaries so onlyu Mac is missing)
 
 If you are able to compile vanitygen or scrypt for platforms not mentioned, please do so and share the binary with me. Thanks :)
