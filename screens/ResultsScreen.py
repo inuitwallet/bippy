@@ -165,7 +165,7 @@ class ResultsScreen(Screen):
 			self.mainLabel.text = self.BippyApp.get_string('Electrum_Decrypt_Successful')
 			self.middleLabel.text = self.BippyApp.get_string('Electrum_Label')
 		self.middleFieldMulti.text = str(seed)
-		self.canvas_ask_update()
+		self.canvas.ask_update()
 		return
 
 	def display_bip_pub_address(self, encAddress):
