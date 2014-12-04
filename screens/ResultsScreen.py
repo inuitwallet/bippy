@@ -156,14 +156,14 @@ class ResultsScreen(Screen):
 		"""
 		self.mainLayout.clear_widgets()
 		self.mainLayout.add_widget(self.mainLabel)
-		self.mainLayout.add_widget(self.middleLabel)
+		#self.mainLayout.add_widget(self.middleLabel)
 		self.mainLayout.add_widget(self.middleFieldMulti)
 
 		Clock.schedule_once(self.switch_to_results, 0.5)
 
 		if type == 'Electrum':
 			self.mainLabel.text = self.BippyApp.get_string('Electrum_Decrypt_Successful')
-			self.middleLabel.text = self.BippyApp.get_string('Electrum_Label')
+			#self.middleLabel.text = self.BippyApp.get_string('Electrum_Label')
 		self.middleFieldMulti.text = str(seed)
 		self.canvas.ask_update()
 		return

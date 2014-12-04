@@ -201,6 +201,6 @@ class MnemonicSeedScreen(Screen):
 					self.BippyApp.show_popup(self.BippyApp.get_string('Popup_Error'), self.BippyApp.get_string('Encrypted_Electrum_Bad_Checksum'))
 					return
 				if message == 'salt':
-					self.BippyApp.show_popup(self.BippyApp.get_string('Popup_Error'), self.BippyApp.get_string(''))
+					self.BippyApp.show_popup(self.BippyApp.get_string('Popup_Error'), self.BippyApp.get_string('Electrum_Bad_Salt'))
 			else:
-				resultsScreen.display_mnemonic(seed, 'Electrum')
+				resultsScreen.display_mnemonic(message, 'Electrum')
