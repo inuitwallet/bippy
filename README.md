@@ -1,7 +1,7 @@
 #Bippy 
 ###fast and easy BIP0038 encryption and vanity addresses for a range of crypto currencies
 
-Bippy is able to generate valid private keys and addresses for a range of currencies. It uses the BIP0038 encryption method [https://github.com/bitcoin/bips/blob/master/bip-0038.mediawiki] to add passphrase protected encryption to the private keys. Using a customised version of vanitygen [https://github.com/inuitwallet/vanitygen], Bippy is able to generate vanity addresses for most currencies and offer optional BIP0038 encryption on those private keys too.
+Bippy is able to generate valid private keys and addresses for a range of currencies. It uses the [BIP0038 encryption method](https://github.com/bitcoin/bips/blob/master/bip-0038.mediawiki) to encrypt the private keys with a passphrase. Using a customised version of [vanitygen](https://github.com/inuitwallet/vanitygen), Bippy is also able to generate vanity addresses for most currencies and offer optional BIP0038 encryption on those private keys too.
 
 ###Features
 
@@ -25,7 +25,7 @@ http://bippy.org/download
 
 ###Installing Bippy from source
 
-Bippy is built using Python 2.7 [https://www.python.org/downloads/] and Kivy [http://kivy.org/#download]. 
+Bippy is built using [Python 2.7](https://www.python.org/downloads/) and [Kivy](http://kivy.org/#download). 
 Both will need to be installed on your computer before Bippy will run. There are good instructions for installing both Python and Kivy on their respective websites. 
 
 On Windows Kivy comes as a portable application. It can be a bit of a faff to get it working first time but the instructions on the Kivy site are clearer than I can manage here.
@@ -35,7 +35,7 @@ On Windows Kivy comes as a portable application. It can be a bit of a faff to ge
 If you used the Windows installer, simply click the link on the Desktop or in the Start Menu.
 
 Otherwise, once you have Python and Kivy installed clone this repository and run the Bippy.py file
-The command used differs on different OSes. On Linux you use 'python Bippy.py'. On Mac you use 'kivy Bippy.py'. 
+The command used differs on different OSes. On Linux you use `python Bippy.py`. On Mac you use `kivy Bippy.py`. 
 
 Bippy can be used totally offline. It also has no cache (unlike a web browser) so the keys it generates can be considered 'cold'.
 
