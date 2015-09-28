@@ -36,7 +36,9 @@ class LinksScreen(Screen):
 		"""
 			return the Woodwallets url for public key only
 		"""
-		return 'https://woodwallets.io/product/woodwallet-public-address?pub_addr=' + public + '&pub_coin=' + self.BippyApp.chosenCurrencyLongName + '&orig=bippy'
+		return 'https://woodwallets.io/product/woodwallet-public-address?pub_addr={}&' \
+			   'pub_coin={}&orig=bipppy'.format(public,
+												self.BippyApp.chosenCurrencyLongName)
 
 	def get_private_ww(self, private, mnemonic=''):
 		"""
@@ -46,10 +48,14 @@ class LinksScreen(Screen):
 			coin = self.BippyApp.chosenCurrencyLongName
 		else:
 			coin = mnemonic
-		return 'https://woodwallets.io/product/one-side-private-key-only?pvt_pvtkey=' + private + '&pvt_coin=' + coin + '&orig=bippy'
+		return 'https://woodwallets.io/product/one-side-private-key-only?pvt_pvtkey={}&' \
+			   'pvt_coin={}&orig=bippy'.format(private, coin)
 
 	def get_double_ww(self, public, private):
 		"""
 			return the double sided url for both private key and public address
 		"""
-		return 'https://woodwallets.io/product/woodwallet-private-key-and-public-address?dbl_addr=' + public + '&dbl_pvtkey=' + private + '&dbl_coin=' + self.BippyApp.chosenCurrencyLongName + '&orig=bippy'
+		return 'https://woodwallets.io/product/woodwallet-private-key-and-public-address' \
+			   '?dbl_addr={}&dbl_pvtkey={}&dbl_coin={}&orig=bippy'.format(public,
+																		  private,
+																		  self.BippyApp.chosenCurrencyLongName)
